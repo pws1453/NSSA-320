@@ -3,8 +3,8 @@
   hosts: hosts
   tasks:
 
-  - name: Set Static IP
-    ansible.windows.win_powershell:
-      script: |
-        Set-NetIPInterface -InterfaceAlias Ethernet -Dhcp Disabled
-        New-NetIPAddress -InterfaceAlias Ethernet -IPAddress 10.0.3.104 -PrefixLength 24 -DefaultGateway 10.0.3.254
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ./Set-StaticIP.ps1 
+      dest: C:\Users\Administrator\Set-StaticIP.ps1
+      mode: '0755'
