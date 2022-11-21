@@ -1,0 +1,2 @@
+pywinrm == 0.4.3
+requests == 2.28.1
