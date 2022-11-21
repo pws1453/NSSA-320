@@ -1,0 +1,46 @@
+---
+- name: Make AD Users
+  hosts: hosts
+  tasks:
+
+  - name: Install DHCP
+    ansible.windows.win_powershell:
+      script: |
+        Install-WindowsFeature DHCP -IncludeManagementTools
+
+- name: wait
+  hosts: localhost
+  tasks:    
+
+  - name: Wait 45 seconds
+    wait_for:
+      timeout: 45
+
+- name: Make AD Users
+  hosts: hosts
+  tasks:  
+
+  - name: Add dhcp to secgroups
+    ansible.windows.win_powershell:
+      script: |
+        netsh dhcp add securitygroups
+
+- name: wait
+  hosts: localhost
+  tasks:    
+  - name: Wait 45 seconds
+    wait_for:
+      timeout: 45
+
+- name: Make AD Users
+  hosts: hosts
+  tasks:  
+  
+  - name: Add dhcp to secgroups
+    ansible.windows.win_powershell:
+      script: |
+        Restart-Service dhcpserver
+        Add-DhcpServerInDC -DnsName central.winnet.local -IPAddress 10.0.3.104
+        Get-DhcpServerInDC
+        Add-DhcpServerv4Scope -Name "winnet" -StartRange 10.0.3.240 -EndRange 10.0.3.245 -SubnetMask 255.255.255.0 -State Active
+        Set-DhcpServerv4OptionValue -ComputerName "central.winnet.local" -ScopeId 10.0.3.0 -DnsServer 10.0.3.104 -DnsDomain "winnet.local" -Router 10.0.3.254
