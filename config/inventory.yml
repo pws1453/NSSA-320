@@ -3,10 +3,10 @@ all:
     winnet:
       hosts:
         domain_controller:
-          ansible_host: 10.0.2.15
-          uname: Administrator
-          password: P0gword
-          hname: central
-          fqdn: central.winnet.local
+          ansible_host: 10.161.3.27
+          ansible_user: Administrator
+          ansible_ssh_pass: P0gword
       vars:
         domain_name: winnet.local
+        ansible_connection: ssh
+        ansible_shell_type: cmd

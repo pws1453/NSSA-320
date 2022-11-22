@@ -1,0 +1,11 @@
+---
+- name: Setup Remoting
+  hosts: winnet
+  tasks:
+
+  - name: Send Powershell files to Remote
+    ansible.windows.win_copy:
+      src: /home/morb/NSSA-320/playbooks/scripts/Setup-AnsibleRemote.ps1
+      dest: C:\Users\Administrator\Setup-AnsibleRemote.ps1
+  - name: Run remote PowerShell Script
+    win_command: powershell.exe -ExecutionPolicy ByPass -File C:\Users\Administrator\Setup-AnsibleRemote.ps1
