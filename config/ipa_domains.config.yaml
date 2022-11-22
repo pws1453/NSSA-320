@@ -1,0 +1,13 @@
+---
+domains:
+  - name: linnet.local
+    dadmins:
+    - name: archbtw
+      password: P0gword
+      firstname: Arch
+      surname: User
+    dusers:
+    - name: uwuntu
+      password: P0gword
+      firstname: Noob
+      surname: User

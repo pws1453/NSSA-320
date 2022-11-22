@@ -1,0 +1,10 @@
+---
+- name: Set Static IP
+  hosts: hosts
+  tasks:
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ./Set-StaticIP.ps1
+      dest: C:\Users\Administrator\Set-StaticIP.ps1
+      mode: '0755'

@@ -1,0 +1,13 @@
+---
+domains:
+  - name: winnet.local
+    dadmins:
+    - name: poguser
+      password: P0gword
+      firstname: Pog
+      surname: User
+    dusers:
+    - name: normie
+      password: P0gword
+      firstname: Normal
+      surname: User
