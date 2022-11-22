@@ -1,0 +1,11 @@
+[] templatify domain user addition with for loops and shiz
+[] Finalize DHCP Server config
+[] DNS Entries :(
+[] work on FreeIPA and Alma Boxes
+[] figure out PFSense (for DHCP Relay)
+[] configure Kibana and Elastic on an Alma box
+[] configure Filebeats and Metricbeats on various boxes
+[] winlogbeats on windows server :(
+[] Configure a linux client to use windoze domain
+[] cross-domain trust between FreeIPA and AD
+[] docker lab 

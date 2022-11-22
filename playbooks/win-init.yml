@@ -1,6 +1,6 @@
 ---
 - name: Setup Remoting
-  hosts: winnet
+  hosts: domain_controller_ssh
   tasks:
 
   - name: Send Powershell files to Remote

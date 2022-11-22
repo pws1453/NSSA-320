@@ -1,16 +1,16 @@
 ---
 - name: Make an Active Directory domai
-  hosts: hosts
+  hosts: domain_controller
   tasks:
-
+  
   - name: Create new Windows domain in a new forest with specific parameters
     ansible.windows.win_domain:
       database_path: C:\Windows\NTDS
-      dns_domain_name: winnet.local
+      dns_domain_name: "{{ name }}"
       domain_mode: WinThreshold
-      domain_netbios_name: WINNET
+      domain_netbios_name: "{{ netbios_name }}"
       forest_mode: WinThreshold
-      safe_mode_password: password123!
+      safe_mode_password: "{{ safe_mode_password }}"
       sysvol_path: C:\Windows\SYSVOL
     register: domain_install
   - name: Reboot

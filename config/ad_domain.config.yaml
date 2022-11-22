@@ -1,0 +1,16 @@
+--- 
+dadmins: 
+  - 
+    firstname: Pog
+    name: poguser
+    password: P0gword
+    surname: User
+dusers: 
+  - 
+    firstname: Normal
+    name: normie
+    password: P0gword
+    surname: User
+name: winnet.local
+netbios_name: WINNET
+safe_mode_password: P0gword

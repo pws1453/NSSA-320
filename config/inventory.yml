@@ -2,11 +2,19 @@ all:
   children:
     winnet:
       hosts:
-        domain_controller:
+        domain_controller_ssh:
           ansible_host: 10.161.3.27
           ansible_user: Administrator
           ansible_ssh_pass: P0gword
+          ansible_connection: ssh
+          ansible_shell_type: cmd
+        domain_controller:
+          ansible_host: 10.161.3.27
+          ansible_user: Administrator
+          ansible_password: P0gword
+          ansible_connection: winrm
+          ansible_winrm_transport: basic
+          ansible_winrm_server_cert_validation: ignore
+          hostname: central
       vars:
         domain_name: winnet.local
-        ansible_connection: ssh
-        ansible_shell_type: cmd

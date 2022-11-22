@@ -1,11 +1,11 @@
 ---
-- name: Make an Active Directory domai
-  hosts: hosts
+- name: Make an Active Directory domain
+  hosts: domain_controller
   tasks:
-  
-  - name: Change the hostname to sample-hostname
+
+  - name: Change the hostname to inventory-specified
     ansible.windows.win_hostname:
-      name: central
+      name: "{{ hostname }}"
     register: res
 
   - name: Reboot

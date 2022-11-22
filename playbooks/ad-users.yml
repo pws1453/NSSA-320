@@ -1,6 +1,6 @@
 ---
 - name: Make AD Users
-  hosts: hosts
+  hosts: domain_controller
   tasks:
 
   - name: Ensure poguser is created and use custom credentials to create the user
