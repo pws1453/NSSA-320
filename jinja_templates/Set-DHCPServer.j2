@@ -1,8 +1,3 @@
-{% for server in dhcp_servers%}
-Set-NetIPInterface -InterfaceAlias Ethernet -Dhcp Disabled
-New-NetIPAddress -InterfaceAlias Ethernet -IPAddress {{server.ip}} -PrefixLength {{server.prefix_len}} -DefaultGateway {{server.default_gateway}}
-Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses ("{{server.pri_dns_server}}","{{server.sec_dns_server}}")
-{% endfor %}
 Install-WindowsFeature DHCP -IncludeManagementTools
 netsh dhcp add securitygroups | Out-Null
 Restart-Service dhcpserver
@@ -14,3 +9,4 @@ Get-DhcpServerInDC
 Add-DhcpServerv4Scope -Name "{{scope.name}}" -StartRange {{scope.start}} -EndRange {{scope.end}} -SubnetMask {{scope.netmask}} -State Active
 Set-DhcpServerv4OptionValue -ComputerName "{{scope.server}}" -ScopeId {{scope.scope}} -DnsServer {{scope.dns_server}} -Router {{scope.default_gateway}}
 {% endfor %}
+Restart-Service dhcpserver

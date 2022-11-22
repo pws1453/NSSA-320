@@ -1,11 +1,11 @@
 ---
 dhcp_servers:
-  - ip: 10.0.3.104
+  - ip: 10.0.3.3
     name: central.winnet.local
     prefix_len: 24
     pri_dns_server: 127.0.0.1
     sec_dns_server: 8.8.8.8
-    default_gateway: 10.0.3.254
+    default_gateway: 10.0.3.1
 
 dhcp_scopes:
   - name: winnet
@@ -14,7 +14,7 @@ dhcp_scopes:
     start: 10.0.3.240
     end: 10.0.3.245
     dns_server: 127.0.0.1
-    default_gateway: 10.0.3.254
+    default_gateway: 10.0.3.1
     netmask: 255.255.255.0
 
   - name: linnet
@@ -23,5 +23,5 @@ dhcp_scopes:
     start: 10.0.4.240
     end: 10.0.4.245
     dns_server: 10.0.4.104
-    default_gateway: 10.0.4.254
+    default_gateway: 10.0.4.1
     netmask: 255.255.255.0

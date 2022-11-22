@@ -3,31 +3,31 @@
   hosts: domain_controller
   tasks:
 
-  
+  {% for user in dadmins%}
   - name: Ensure Domain Admin is created and use custom credentials to create the user
     community.windows.win_domain_user:
-      name: poguser
-      firstname: Pog
-      surname: User
-      password: P0gword
+      name: {{ user.name }}
+      firstname: {{ user.firstname }}
+      surname: {{ user.surname }}
+      password: {{ user.password }}
       state: present
       groups:
         - Domain Admins
   - name: Ensure Domain Admin exists
     community.windows.win_domain_user:
-      name: poguser
+      name: {{ user.name }}
       state: query
-  
-  
+  {% endfor %}
+  {% for user in dusers%}
   - name: Ensure User is created and use custom credentials to create the user
     community.windows.win_domain_user:
-      name: normie
-      firstname: Normal
-      surname: User
-      password: P0gword
+      name: {{ user.name }}
+      firstname: {{ user.firstname }}
+      surname: {{ user.surname }}
+      password: {{ user.password }}
       state: present
   - name: Ensure User exists
     community.windows.win_domain_user:
-      name: normie
+      name: {{ user.name }}
       state: query
-  
+  {% endfor %}

@@ -3,13 +3,13 @@ all:
     winnet:
       hosts:
         domain_controller_ssh:
-          ansible_host: 10.161.3.27
+          ansible_host: 10.0.3.2
           ansible_user: Administrator
           ansible_ssh_pass: P0gword
           ansible_connection: ssh
           ansible_shell_type: cmd
         domain_controller:
-          ansible_host: 10.161.3.27
+          ansible_host: 10.0.3.2
           ansible_user: Administrator
           ansible_password: P0gword
           ansible_connection: winrm
