@@ -1,0 +1,13 @@
+Install-WindowsFeature DHCP -IncludeManagementTools
+netsh dhcp add securitygroups | Out-Null
+Restart-Service dhcpserver
+
+{% for server in dhcp_servers%}
+Add-DhcpServerInDC -DnsName {{server.name}} -IPAddress {{server.ip}}
+Get-DhcpServerInDC
+{% endfor %}
+
+{% for scope in dhcp_scopes %}
+Add-DhcpServerv4Scope -Name "{{scope.name}}" -StartRange {{scope.start}} -EndRange {{scope.end}} -SubnetMask {{scope.netmask}} -State Active
+Set-DhcpServerv4OptionValue -ComputerName "{{scope.server}}" -ScopeId {{scope.scope}} -DnsServer {{scope.dns_server}} -Router {{scope.default_gateway}}
+{% endfor %}
