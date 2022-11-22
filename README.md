@@ -1,8 +1,9 @@
 # Ansible and Terraform Lab Setup
 Be sure that OpenSSH is enabled on ur windoze box!
 
-Windows needs to have a static IP and SSH Server setup.
-Denote this in your DHCP Setup.
+All devices need to have a static IP and SSH Server setup.
+Windows must have it's static IP in your dhcp.config.yaml and inventory.yml.
+PFSense's OPT1 interface must also have it's firewall rules set in the GUI. 
 
 Make sure that the following is installed
 * Ansible
