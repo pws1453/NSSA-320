@@ -3,7 +3,9 @@ all:
     winnet:
       hosts:
         domain_controller:
-          ansible_host: 10.0.3.104
+          ansible_host: 10.0.2.15
+          uname: Administrator
+          password: P0gword
           hname: central
           fqdn: central.winnet.local
       vars:
