@@ -1,0 +1,24 @@
+---
+- name: Add IPA Users
+  hosts: ipa_server
+  tasks:
+
+  - name: Add ArchBTW
+    community.general.ipa_user:
+      name: archbtw
+      givenname: Arch
+      sn: Btw
+      homedirectory: /home/archbtw
+      ipa_host: ipa.linnet.local
+      ipa_user: admin
+      ipa_pass: P0gword1
+  - name: Ensure that ArchBTW is an admin
+    community.general.ipa_group:
+      name: admins
+      user:
+        - archbtw
+      append: true
+      state: present
+      ipa_host: ipa.linnet.local
+      ipa_user: admin
+      ipa_pass: P0gword1
