@@ -24,3 +24,15 @@ all:
           hostname: central
       vars:
         domain_name: winnet.local
+    linnet:
+      hosts:
+        ipa_server:
+          ansible_host: 10.0.4.100
+          ansible_user: root
+          ansible_password: morbin
+          ipaserver_domain: linnet.local
+          ipaserver_realm: LINNET.LOCAL
+          ipaserver_setup_dns: yes
+          ipaserver_auto_forwarders: yes
+          ipaadmin_password: P0gword1
+          ipadm_password: P0gword1

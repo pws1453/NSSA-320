@@ -1,0 +1,8 @@
+---
+- name: Playbook to configure IPA server
+  hosts: ipa_server
+  tasks:
+  
+  - name: Set Hostname
+    ansible.builtin.hostname:
+        name: ipa.linnet.local
