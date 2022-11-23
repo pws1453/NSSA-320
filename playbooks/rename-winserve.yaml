@@ -1,5 +1,5 @@
 ---
-- name: Make an Active Directory domain
+- name: Rename Host
   hosts: domain_controller
   tasks:
 

@@ -1,2 +1,3 @@
 #!/bin/sh
-dhcrelay -id pcn2 -iu pcn1 10.0.4.100
+
+dhcrelay -id em2 -iu em1 10.0.3.100

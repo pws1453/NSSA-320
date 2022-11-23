@@ -1,0 +1,13 @@
+---
+- name: Setup DHCP Relay on PFSense
+  hosts: pfsense
+  tasks:
+
+  - name: Copy relay script with owner and permissions
+    ansible.builtin.copy:
+      src: /home/morb/NSSA-320/pfsense/relay.sh
+      dest: /usr/local/etc/rc.d/relay.sh
+      mode: '0755'
+
+  - name: Run relay script
+    ansible.builtin.command: /usr/local/etc/rc.d/relay.sh

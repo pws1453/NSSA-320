@@ -1,15 +1,21 @@
 all:
+  hosts:
+    pfsense:
+      ansible_host: 10.0.4.1
+      ansible_connection: ssh
+      ansible_user: admin
+      ansible_password: pfsense
   children:
     winnet:
       hosts:
         domain_controller_ssh:
-          ansible_host: 10.0.4.100
+          ansible_host: 10.0.3.100
           ansible_user: Administrator
           ansible_ssh_pass: P0gword
           ansible_connection: ssh
           ansible_shell_type: cmd
         domain_controller:
-          ansible_host: 10.0.4.100
+          ansible_host: 10.0.3.100
           ansible_user: Administrator
           ansible_password: P0gword
           ansible_connection: winrm

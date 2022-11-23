@@ -1,5 +1,5 @@
 ---
-- name: Make an Active Directory domai
+- name: Make an Active Directory Domain
   hosts: domain_controller
   tasks:
   

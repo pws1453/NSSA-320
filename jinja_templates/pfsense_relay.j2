@@ -1,0 +1,6 @@
+#!/bin/sh
+{% for server in dhcp_servers -%}
+{% if server.relay -%}
+dhcrelay -id {{server.relay.destination_interface}} -iu {{server.relay.source_interface}} {{server.ip}}
+{% endif -%}
+{% endfor -%}
