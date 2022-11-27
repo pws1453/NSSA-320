@@ -1,0 +1,4 @@
+FROM python:alpine
+RUN mkdir /apex && chmod 777 /apex
+WORKDIR /apex
+CMD python3 -m http.server 8080

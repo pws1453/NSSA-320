@@ -1,0 +1,3 @@
+[submodule "podman/static-apex"]
+	path = podman/static-apex
+	url = https://github.com/ryan77627/rochesterapex-com.git
