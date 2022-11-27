@@ -36,3 +36,7 @@ all:
           ipaserver_auto_forwarders: yes
           ipaadmin_password: P0gword1
           ipadm_password: P0gword1
+        apex:
+          ansible_host: 10.0.2.4
+          ansible_user: root
+          ansible_password: morbin
