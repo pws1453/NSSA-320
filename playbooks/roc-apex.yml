@@ -3,6 +3,10 @@
   hosts: apex
   tasks:
 
+    - name: Set a hostname
+      ansible.builtin.hostname:
+        name: apex.linnet.local
+
     - name: Ensure git is at the latest version
       ansible.builtin.dnf:
         name: git >= 2.31.1
