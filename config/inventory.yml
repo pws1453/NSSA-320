@@ -9,25 +9,25 @@ all:
     winnet:
       hosts:
         domain_controller_ssh:
-          ansible_host: 10.0.3.100
+          ansible_host: 10.0.3.2
           ansible_user: Administrator
           ansible_ssh_pass: P0gword
           ansible_connection: ssh
           ansible_shell_type: cmd
         domain_controller:
-          ansible_host: 10.0.3.100
+          ansible_host: 10.0.3.2
           ansible_user: Administrator
           ansible_password: P0gword
           ansible_connection: winrm
           ansible_winrm_transport: basic
           ansible_winrm_server_cert_validation: ignore
-          hostname: central
+          hostname: central #DO NOT INCLUDE THE DOMAIN NAME
       vars:
         domain_name: winnet.local
     linnet:
       hosts:
         ipa_server:
-          ansible_host: 10.0.4.100
+          ansible_host: 10.0.4.2
           ansible_user: root
           ansible_password: morbin
           ipaserver_domain: linnet.local
@@ -37,6 +37,6 @@ all:
           ipaadmin_password: P0gword1
           ipadm_password: P0gword1
         apex:
-          ansible_host: 10.0.2.4
+          ansible_host: 10.0.4.10
           ansible_user: root
           ansible_password: morbin

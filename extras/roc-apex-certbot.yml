@@ -7,16 +7,6 @@
       ansible.builtin.hostname:
         name: apex.linnet.local
 
-    - name: Download epel-release
-      ansible.builtin.dnf:
-        name: epel-release == 9
-        state: installed
-
-    - name: Download fonts
-      ansible.builtin.copy:
-        src:
-        dst:
-
     - name: Ensure git is at the latest version
       ansible.builtin.dnf:
         name: git >= 2.31.1
@@ -25,6 +15,11 @@
     - name: Ensure nginx is at the latest version
       ansible.builtin.dnf:
         name: nginx >= 1.20.1
+        state: installed
+
+    - name: Ensure snap is at the latest version
+      ansible.builtin.dnf:
+        name: snapd >= 2.56.2
         state: installed
 
     - name: Ensure openssl is at the latest version
@@ -36,6 +31,14 @@
       ansible.builtin.dnf:
         name: python3-cryptography >= 36.0.1
         state: installed
+
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: /var/lib/snapd/snap
+        dest: /snap
+        owner: root
+        group: root
+        state: link
 
     - name: Read-write git checkout from git
       ansible.builtin.git:
@@ -62,22 +65,32 @@
 
     - name: Copy "nginx.conf"
       ansible.builtin.copy:
-        src: /home/morb/code/NSSA-320/apex/nginx.conf
+        src: /home/morb/NSSA-320/apex/nginx.conf
         dest: /etc/nginx/nginx.conf
         owner: root
         group: root
         mode: '0644'
         backup: true
 
+    - name: Start snap
+      ansible.builtin.service:
+        name: snapd
+        state: started
+
     - name: Start nginx
       ansible.builtin.service:
         name: nginx
         state: started
-    
-    - name: permit traffic in public zone for https service
-      ansible.posix.firewalld:
-        service: https
-        zone: public
-        immediate: yes
-        permanent: yes
-        state: enabled
+
+    - name: Install "certbot" with option --classic
+      community.general.snap:
+        name: certbot
+        classic: true
+
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: /snap/bin/certbot
+        dest: /usr/bin/certbot
+        owner: morb
+        group: morb
+        state: link

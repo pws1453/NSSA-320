@@ -1,0 +1,26 @@
+---
+- name: Setup Kibana & Elastic
+  hosts: monitoring
+  tasks:
+  
+  - name: update crypto policies
+    ansible.builtin.command: update-crypto-policies --set DEFAULT:SHA1
+
+  - name: import RPM key
+    ansible.builtin.rpm_key:
+      state: present
+      key: https://packages.elastic.co/GPG-KEY-elasticsearch
+
+  - name: Send Repo files to Remote
+    ansible.builtin.copy:
+      dest: /etc/yum.repos.d/
+      src: /home/morb/code/NSSA-320/elastic/elastic.repo
+  - name: Ensure kibana is at the latest version
+    ansible.builtin.dnf:
+      name: kibana == 8.5.2
+      state: installed
+  
+  - name: Ensure elasticsearch is at the latest version
+    ansible.builtin.dnf:
+      name: elasticsearch == 8.5.2
+      state: installed

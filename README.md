@@ -2,7 +2,7 @@
 Be sure that OpenSSH is enabled on ur windoze box!
 
 All devices need to have a static IP and SSH Server setup, and have root/Administrator access availible over SSH.
-Windows must have it's static IP in your dhcp.config.yaml and inventory.yml.
+Windows Domain Controller must have it's static IP in your dhcp.config.yaml and inventory.yml.
 PFSense's OPT1 interface must also have it's firewall rules set in the GUI. 
 
 Make sure that the following is installed

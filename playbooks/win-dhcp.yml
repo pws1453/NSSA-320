@@ -5,7 +5,7 @@
 
   - name: Send Powershell files to Remote
     ansible.windows.win_copy:
-      src: /home/morb/NSSA-320/scripts/DHCPServer-Setup.ps1
+      src: /home/morb/code/NSSA-320/scripts/DHCPServer-Setup.ps1
       dest: C:\Users\Administrator\DHCPServer-Setup.ps1
   - name: Run remote PowerShell Script
     win_command: powershell.exe -ExecutionPolicy ByPass -File C:\Users\Administrator\DHCPServer-Setup.ps1

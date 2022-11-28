@@ -1,5 +1,5 @@
 ---
-- name: Playbook to configure IPA server
+- name: IPA Hostname 
   hosts: ipa_server
   tasks:
   

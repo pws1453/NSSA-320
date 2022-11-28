@@ -1,0 +1,25 @@
+---
+- name: Get Comic Sans
+  hosts: linnet
+  tasks:
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /usr/share/fonts/comic
+      state: directory
+      mode: '0755'
+  - name: Send Font files to Remote
+    ansible.builtin.copy:
+      dest: /usr/share/fonts/comic
+      src: /home/morb/code/NSSA-320/apex/comic/comic.ttf
+  - name: Send Font files to Remote
+    ansible.builtin.copy:
+      dest: /usr/share/fonts/comic
+      src: /home/morb/code/NSSA-320/apex/comic/comici.ttf
+  - name: Send Font files to Remote
+    ansible.builtin.copy:
+      dest: /usr/share/fonts/comic
+      src: /home/morb/code/NSSA-320/apex/comic/comicbd.ttf
+  - name: Send Font files to Remote
+    ansible.builtin.copy:
+      dest: /usr/share/fonts/comic
+      src: /home/morb/code/NSSA-320/apex/comic/comicz.ttf

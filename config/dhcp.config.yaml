@@ -1,14 +1,14 @@
 ---
-dhcp_servers:
-  - ip: 10.0.3.100
-    name: central.winnet.local
-    prefix_len: 24
-    pri_dns_server: 127.0.0.1
-    sec_dns_server: 8.8.8.8
-    default_gateway: 10.0.3.1
-    relay:
-      destination_interface: em2
-      source_interface: em1
+dhcp_server:
+  ip: 10.0.3.2
+  name: central.winnet.local
+  prefix_len: 24
+  pri_dns_server: 127.0.0.1
+  sec_dns_server: 8.8.8.8
+  default_gateway: 10.0.3.1
+  relay:
+    destination_interface: em2
+    source_interface: em1
 
 dhcp_scopes:
   - name: winnet
