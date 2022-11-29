@@ -15,3 +15,5 @@ Example ansible run:
 ```
 ansible-playbook -vvv playbooks/rename-winserve.yaml -i config/inventory.yml
 ```
+
+ansible-galaxy collection install freeipa.ansible_freeipa

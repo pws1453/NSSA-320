@@ -1,8 +1,4 @@
 ---
-- name: Install Nginx
-  hosts: apex
-  tasks:
-
     - name: Set a hostname
       ansible.builtin.hostname:
         name: apex.linnet.local
@@ -11,11 +7,6 @@
       ansible.builtin.dnf:
         name: epel-release == 9
         state: installed
-
-    - name: Download fonts
-      ansible.builtin.copy:
-        src:
-        dst:
 
     - name: Ensure git is at the latest version
       ansible.builtin.dnf:
@@ -62,7 +53,7 @@
 
     - name: Copy "nginx.conf"
       ansible.builtin.copy:
-        src: /home/morb/code/NSSA-320/apex/nginx.conf
+        src: files/nginx.conf
         dest: /etc/nginx/nginx.conf
         owner: root
         group: root

@@ -1,8 +1,0 @@
----
-- name: IPA Hostname 
-  hosts: ipa_server
-  tasks:
-  
-  - name: Set Hostname
-    ansible.builtin.hostname:
-        name: ipa.linnet.local

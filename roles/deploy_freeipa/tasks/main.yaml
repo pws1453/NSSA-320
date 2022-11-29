@@ -1,0 +1,10 @@
+---
+- name: Set Hostname
+  ansible.builtin.hostname:
+      name: {{ linhostname }}
+      
+- name: Deploy FreeIPA
+  ansible.builtin.include_tasks: ipa.yml
+
+  - name: Add IPA users  
+  ansible.builtin.include_tasks: ipa-users.yml
