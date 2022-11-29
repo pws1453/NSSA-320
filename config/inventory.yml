@@ -40,3 +40,7 @@ all:
           ansible_host: 10.0.4.10
           ansible_user: root
           ansible_password: morbin
+        monitoring:
+          ansible_host: 192.168.1.7
+          ansible_user: root
+          ansible_password: morbin

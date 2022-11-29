@@ -14,7 +14,7 @@
   - name: Send Repo files to Remote
     ansible.builtin.copy:
       dest: /etc/yum.repos.d/
-      src: /home/morb/code/NSSA-320/elastic/elastic.repo
+      src: /home/gaia/code/NSSA-320/elastic/elastic.repo
   - name: Ensure kibana is at the latest version
     ansible.builtin.dnf:
       name: kibana == 8.5.2
@@ -24,3 +24,15 @@
     ansible.builtin.dnf:
       name: elasticsearch == 8.5.2
       state: installed
+
+  - name: Send default filebeat config to local
+    ansible.builtin.fetch:
+      src: /etc/elasticsearch/elasticsearch.yml
+      dest: /home/gaia/code/NSSA-320/elastic/elasticsearch.yml
+      flat: true
+  
+  - name: Send default filebeat config to local
+    ansible.builtin.fetch:
+      src: /etc/kibana/kibana.yml
+      dest: /home/gaia/code/NSSA-320/kibana/kibana.yml
+      flat: true
