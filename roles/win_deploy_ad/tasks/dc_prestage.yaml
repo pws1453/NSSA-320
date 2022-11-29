@@ -3,7 +3,7 @@
   ansible.windows.win_user:
     name: "{{ item.name|default(item) }}"
     state: present
-    password: "{{ item.password|default(win_deploydc_team_password) }}"
+    password: "{{ item.password|default(default_password) }}"
     update_password: always
   loop:
     - Administrator

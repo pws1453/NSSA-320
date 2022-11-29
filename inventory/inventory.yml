@@ -18,9 +18,12 @@ all:
           ansible_host: 10.0.3.2
           ansible_user: Administrator
           ansible_password: P0gword
-          ansible_connection: winrm
-          ansible_winrm_transport: basic
-          ansible_winrm_server_cert_validation: ignore
+          ansible_connection: psrp
+          ansible_psrp_cert_validation: ignore
+          ansible_psrp_protocol: https
+          ansible_psrp_auth: ntlm
+          ansible_psrp_credssp_auth_mechanism: ntlm
+          ansible_become_method: runas
           hostname: central #DO NOT INCLUDE THE DOMAIN NAME
       vars:
         domain_name: winnet.local

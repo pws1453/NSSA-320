@@ -1,4 +1,0 @@
----
-
-win_deploydnsserver_forwarders: "{{ win_dns_forwarders }}"
-win_deploydnsserver_working_dir: "{{ win_working_dir }}"

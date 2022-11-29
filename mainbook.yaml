@@ -1,0 +1,32 @@
+---
+- name: Configure PFsense
+  hosts: pfsense
+  roles:
+    - pfsense
+  tags:
+    - pfsense
+
+- name: Deploy windows
+  hosts: domain_controller
+  roles:
+    - windows_standards
+    - win_deploy_ad
+    - win_deploy_dns
+    - win_deploy_dhcp
+  tags:
+    - windows
+
+
+- name: deploy freeIPA
+  hosts: ipa_server
+  roles:
+    - deploy_freeipa
+  tags:
+    - freeipa
+
+- name: deploy Webserver
+  hosts: apex
+  roles:
+    - lin_deploy_web
+  tags:
+    - webserver

@@ -1,9 +1,9 @@
 ---
 - name: Create Domain
   ansible.windows.win_domain:
-    dns_domain_name: "{{ win_deploydc_domain }}"
-    domain_netbios_name: "{{ win_deploydc_netbios }}"
-    safe_mode_password: "{{ win_deploydc_team_password }}"
+    dns_domain_name: "{{ win_domain_name }}"
+    domain_netbios_name: "{{ netbios_name }}"
+    safe_mode_password: "{{ default_password }}"
   register: domain_result
 
 - name: Restart if Needed
@@ -17,10 +17,10 @@
 
 - name: Promote DC
   ansible.windows.win_domain_controller:
-    dns_domain_name: "{{ win_deploydc_domain }}"
-    domain_admin_password: "{{ win_deploydc_team_password }}"
-    domain_admin_user: "{{ win_deploydc_netbios }}\\Administrator"
-    safe_mode_password: "{{ win_deploydc_team_password }}"
+    dns_domain_name: "{{ win_domain_name }}"
+    domain_admin_password: "{{ default_password }}"
+    domain_admin_user: "{{ netbios_name }}\\Administrator"
+    safe_mode_password: "{{ default_password }}"
     install_dns: yes
     state: domain_controller
   register: dc_promo_result
