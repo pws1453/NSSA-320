@@ -1,0 +1,10 @@
+---
+- name: Complete the Prerequisites for DC Promotion
+  ansible.builtin.include_tasks: dc_prestage.yaml
+
+- name: Ensure the Computer is Promoted to DC Status
+  ansible.builtin.include_tasks: promotion.yaml
+
+- name: Create Domain Users
+  ansible.builtin.include_tasks: users.yaml
+

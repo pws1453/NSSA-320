@@ -1,0 +1,16 @@
+---
+- name: Install DHCP 
+  ansible.windows.win_feature:
+    name: DHCP
+    include_management_tools: True
+    include_sub_features: True
+    state: present
+  register: win_feature
+
+  - name: Copy relay script with owner and permissions
+    ansible.builtin.template:
+      src: templates/dhcp.j2
+      dest: C:\Users\Administrator\DHCPServer-Setup.ps1
+
+  - name: Run remote PowerShell Script
+    win_command: powershell.exe -ExecutionPolicy ByPass -File C:\Users\Administrator\DHCPServer-Setup.ps1

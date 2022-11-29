@@ -1,0 +1,9 @@
+---
+  - name: Copy relay script with owner and permissions
+    ansible.builtin.template:
+      src: templates/pfsense_relay.j2
+      dest: /usr/local/etc/rc.d/relay.sh
+      mode: '0755'
+
+  - name: Run relay script
+    ansible.builtin.command: /usr/local/etc/rc.d/relay.sh

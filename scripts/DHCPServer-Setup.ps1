@@ -1,6 +1,5 @@
-Install-WindowsFeature DHCP -IncludeManagementTools
 netsh dhcp add securitygroups | Out-Null
-Restart-Service dhcpserver
+
 
 Add-DhcpServerInDC -DnsName central.winnet.local -IPAddress 10.0.3.2
 Get-DhcpServerInDC

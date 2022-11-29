@@ -1,0 +1,109 @@
+# config/ad_domain.config.yaml
+--- 
+dadmins: 
+  - 
+    firstname: Pog
+    name: poguser
+    password: P0gword
+    surname: User
+dusers: 
+  - 
+    firstname: Normal
+    name: normie
+    password: P0gword
+    surname: User
+name: winnet.local
+netbios_name: WINNET
+safe_mode_password: P0gword
+# config/dhcp.config.yaml
+---
+dhcp_server:
+  ip: 10.0.3.2
+  name: central.winnet.local
+  prefix_len: 24
+  pri_dns_server: 127.0.0.1
+  sec_dns_server: 8.8.8.8
+  default_gateway: 10.0.3.1
+  relay:
+    destination_interface: em2
+    source_interface: em1
+
+dhcp_scopes:
+  - name: winnet
+    scope: 10.0.3.0
+    server: central.winnet.local
+    start: 10.0.3.240
+    end: 10.0.3.245
+    dns_server: 8.8.8.8
+    default_gateway: 10.0.3.1
+    netmask: 255.255.255.0
+
+  - name: linnet
+    scope: 10.0.4.0
+    server: central.winnet.local
+    start: 10.0.4.240
+    end: 10.0.4.245
+    dns_server: 8.8.8.8
+    default_gateway: 10.0.4.1
+    netmask: 255.255.255.0
+# config/inventory.yaml
+all:
+  hosts:
+    pfsense:
+      ansible_host: 10.0.4.1
+      ansible_connection: ssh
+      ansible_user: admin
+      ansible_password: pfsense
+  children:
+    winnet:
+      hosts:
+        domain_controller_ssh:
+          ansible_host: 10.0.3.2
+          ansible_user: Administrator
+          ansible_ssh_pass: P0gword
+          ansible_connection: ssh
+          ansible_shell_type: cmd
+        domain_controller:
+          ansible_host: 10.0.3.2
+          ansible_user: Administrator
+          ansible_password: P0gword
+          ansible_connection: winrm
+          ansible_winrm_transport: basic
+          ansible_winrm_server_cert_validation: ignore
+          hostname: central #DO NOT INCLUDE THE DOMAIN NAME
+      vars:
+        domain_name: winnet.local
+    linnet:
+      hosts:
+        ipa_server:
+          ansible_host: 10.0.4.2
+          ansible_user: root
+          ansible_password: morbin
+          ipaserver_domain: linnet.local
+          ipaserver_realm: LINNET.LOCAL
+          ipaserver_setup_dns: yes
+          ipaserver_auto_forwarders: yes
+          ipaadmin_password: P0gword1
+          ipadm_password: P0gword1
+        apex:
+          ansible_host: 10.0.4.10
+          ansible_user: root
+          ansible_password: morbin
+        monitoring:
+          ansible_host: 192.168.1.7
+          ansible_user: root
+          ansible_password: morbin
+# config/ipa_domains.config.yaml
+---
+domains:
+  - name: linnet.local
+    dadmins:
+    - name: archbtw
+      password: P0gword
+      firstname: Arch
+      surname: User
+    dusers:
+    - name: uwuntu
+      password: P0gword
+      firstname: Noob
+      surname: User

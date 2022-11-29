@@ -1,6 +1,4 @@
-Install-WindowsFeature DHCP -IncludeManagementTools
 netsh dhcp add securitygroups | Out-Null
-Restart-Service dhcpserver
 
 Add-DhcpServerInDC -DnsName {{dhcp_server.name}} -IPAddress {{dhcp_server.ip}}
 Get-DhcpServerInDC

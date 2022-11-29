@@ -1,0 +1,5 @@
+---
+
+destination_interface: "em2"
+source_interface: "em1"
+dhcp_server_ip: "10.0.3.2"

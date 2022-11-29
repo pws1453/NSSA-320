@@ -1,4 +1,0 @@
-#!/bin/sh
-{% if dhcp_server.relay -%}
-dhcrelay -id {{dhcp_server.relay.destination_interface}} -iu {{dhcp_server.relay.source_interface}} {{dhcp_server.ip}}
-{% endif -%}
